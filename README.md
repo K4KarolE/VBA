@@ -11,22 +11,23 @@
 ```
 Sub InsertRow_Active_Cell()
     
-    ''' INSERT ROW
+    ''' INSERT A NEW ROW
     ActiveCell.EntireRow.Insert
-
-    ''' STARS - RELOCATE
+    
+    ''' STARS - RELOCATE OLD VALUE
     Cell_Star_New = "G" & ActiveCell.Row + 1
-
+    
     Range(Cell_Star_New).Offset(-1, 0) = Range(Cell_Star_New).Value
     Range(Cell_Star_New).Value = None
-
-    ''' DATE - RELOCATE
-    Old_Row_Value = ActiveCell.Row + 1
-    Date_New_Range = "K" & Old_Row_Value & ":" & "M" & Old_Row_Value
-
+    
+    ''' DATE - RELOCATE OLD VALUES
+    New_Row_Value = ActiveCell.Row + 1
+    Date_New_Range = "K" & New_Row_Value & ":" & "M" & New_Row_Value
+    
     Range(Date_New_Range).Offset(-1, 0) = Range(Date_New_Range).Value
     Range(Date_New_Range).Value = None
     
+
 End Sub
 ```
 

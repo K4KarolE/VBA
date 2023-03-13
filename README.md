@@ -1,8 +1,8 @@
 # VBA - learn & archive
 
 ## Insert a row, relocate old values, get a clean new row
-- Insert a row in the active cell`s line
-- Move the old value(s) up by one cell
+- Inserts a row in the `ActiveCell`s line
+- Moves the old value(s) up by one cell
 
 <div align="center">
     <img src="docs/insert_row.png" </img> 
@@ -31,5 +31,24 @@ Sub InsertRow_Active_Cell()
 End Sub
 ```
 
+## Copy values from a different workbook
+- Workbooks needs to be opened (in this case)
+- Moves the indicator(#) down for the next record
+- According to the `ActiveCell` copies the new title details
+- Merged cell as the `ActiveCell` can be problematic (offset behave differently for merged and default cells when you try to copy them together (as `.value` or with `copy/paste`))
+
+<div align="center">
+    <img src="docs/add_new_title.png" </img> 
+</div>
+
+```
+Sub Copy_New_Title()
+
+ActiveCell.Offset(3, 0).Value = ActiveCell.Value
+
+Workbooks("Movies.xlsm").Worksheets("Movies").Range(ActiveCell, ActiveCell.Offset(-2, 16)).Value = Workbooks("Movies_New_Record.xlsx").Worksheets("New Record").Range("B3:R5").Value
+
+End Sub
+```
 
 

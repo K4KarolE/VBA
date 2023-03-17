@@ -35,7 +35,7 @@ End Sub
 - Workbooks needs to be opened (in this case)
 - Moves the indicator(#) down for the next record
 - According to the `ActiveCell` copies the new title details
-- Merged cell as the `ActiveCell` can be problematic (offset behave differently for merged and default cells when you try to copy them together (as `.value` or with `copy/paste`))
+- Merged cell as the `ActiveCell` can be problematic (`Offset` behave differently for merged and default cells when you try to copy them together (as `.value` or with `copy/paste`))
 
 <div align="center">
     <img src="docs/add_new_title.png" </img> 

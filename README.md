@@ -1,32 +1,43 @@
 # VBA - learn & archive
 
-## Insert a row, relocate old values, get a clean new row
+## Insert a row, relocate old values, add the date of the day
 - Inserts a row in the `ActiveCell`s line
-- Moves the old value(s) up by one cell
+- Moves the old value(s) up by one cell (star, date)
+- Adds the the current day, month, year in the "new" row
 
 <div align="center">
     <img src="docs/insert_row.png" </img> 
 </div>
 
 ```
-Sub InsertRow_Active_Cell()
+Sub Insert_Row()
     
-    ''' INSERT A NEW ROW
+    ''' INSERT ROW
     ActiveCell.EntireRow.Insert
     
-    ''' STARS - RELOCATE OLD VALUE
-    Cell_Star_New = "G" & ActiveCell.Row + 1
+    ''' STARS - RELOCATE
+    ActiveCell.Offset(0, 5) = ActiveCell.Offset(1, 5)
+    ActiveCell.Offset(1, 5) = None
     
-    Range(Cell_Star_New).Offset(-1, 0) = Range(Cell_Star_New).Value
-    Range(Cell_Star_New).Value = None
+        '' SOLUTION #2 - RANGE COMPILING
+        'Cell_Star_New = "G" & ActiveCell.Row + 1
+        'Range(Cell_Star_New).Offset(-1, 0) = Range(Cell_Star_New).Value
+        'Range(Cell_Star_New).Value = None
     
-    ''' DATE - RELOCATE OLD VALUES
-    New_Row_Value = ActiveCell.Row + 1
-    Date_New_Range = "K" & New_Row_Value & ":" & "M" & New_Row_Value
+    ''' DATE - RELOCATE
+    Range(ActiveCell.Offset(0, 9), ActiveCell.Offset(0, 11)).Value = Range(ActiveCell.Offset(1, 9), ActiveCell.Offset(1, 11)).Value
+    Range(ActiveCell.Offset(1, 9), ActiveCell.Offset(1, 11)).Value = None
     
-    Range(Date_New_Range).Offset(-1, 0) = Range(Date_New_Range).Value
-    Range(Date_New_Range).Value = None
+        '' SOLUTION #2 - RANGE COMPILING
+        'New_Row_Value = ActiveCell.Row + 1
+        'Date_New_Range = "K" & New_Row_Value & ":" & "M" & New_Row_Value
+        'Range(Date_New_Range).Offset(-1, 0) = Range(Date_New_Range).Value
+        'Range(Date_New_Range).Value = None
     
+    ''' DATE - ADD TODAY`S
+    ActiveCell.Offset(1, 9) = Format(Date, "dd")
+    ActiveCell.Offset(1, 10) = Format(Date, "mm")
+    ActiveCell.Offset(1, 11) = Format(Date, "yyyy")
 
 End Sub
 ```

@@ -62,6 +62,9 @@ Workbooks("Movies.xlsm").Worksheets("Movies").Range(ActiveCell, ActiveCell.Offse
 ''' Insert `How many times seen` formula
 ActiveCell.Offset(-2, 12).Formula = "=COUNTA(" & ActiveCell.Offset(-2, 11).Address & ":" & ActiveCell.Offset(0, 11).Address & ")"
 
+''' Merge `How many times seen` cells
+Range(ActiveCell.Offset(-2, 12), ActiveCell.Offset(0, 12)).Merge
+
 End Sub
 ```
 

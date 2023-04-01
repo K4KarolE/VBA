@@ -59,6 +59,9 @@ ActiveCell.Offset(3, 0).Value = ActiveCell.Value
 
 Workbooks("Movies.xlsm").Worksheets("Movies").Range(ActiveCell, ActiveCell.Offset(-2, 16)).Value = Workbooks("Movies_New_Record.xlsx").Worksheets("New Record").Range("B3:R5").Value
 
+''' Insert `How many times seen` formula
+ActiveCell.Offset(-2, 12).Formula = "=COUNTA(" & ActiveCell.Offset(-2, 11).Address & ":" & ActiveCell.Offset(0, 11).Address & ")"
+
 End Sub
 ```
 

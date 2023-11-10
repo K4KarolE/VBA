@@ -68,4 +68,28 @@ Range(ActiveCell.Offset(-2, 12), ActiveCell.Offset(0, 12)).Merge
 End Sub
 ```
 
+## Update every 2nd column's width, row's height
+<div align="center">
+    <img src="docs/update_row_column.png" </img> 
+</div>
 
+```
+Sub Row_Column_update()
+    
+    'Row Height
+    Dim i As Integer
+    i = 4
+    While i < 109
+        Rows(i).RowHeight = Range("B2").Value
+        i = i + 2
+    Wend
+    
+    'Column Width
+    i = 4
+    While i < 18
+        Columns(i).ColumnWidth = Range("A2").Value
+        i = i + 2
+    Wend
+    
+End Sub
+```

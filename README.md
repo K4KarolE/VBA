@@ -93,3 +93,41 @@ Sub Row_Column_update()
     
 End Sub
 ```
+
+## Iterate over sheet and update cell` style
+```
+Sub Weight_cell_update()
+
+    Dim i As Integer
+    Dim k As Integer
+    Dim activeCell as Range
+    
+    row_counter = 3
+    column_counter = 4
+
+    While row_counter < 109
+    	While column_counter < 17
+    		
+    		Set activeCell = Cells(row_counter,column_counter)
+    		
+    		activeCell.NumberFormat = "#.0"
+    		activeCell.HorizontalAlignment = xlCenter
+   			activeCell.VerticalAlignment = xlCenter
+    		
+	        With activeCell.Font
+			.Name = "Arial"
+		    .FontStyle = "Bold"
+			.Size = 11
+			.Color = RGB(47,85,151)
+			End With
+				
+			column_counter = column_counter + 2
+			
+      	Wend
+      	
+       column_counter = 4
+       row_counter = row_counter + 2
+    Wend
+
+End Sub
+```
